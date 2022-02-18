@@ -6,6 +6,8 @@ const express = require('express'),
 app.get('/', (req, res) => res.send('Bienvenue sur Express dummy API'));
 
 app.get('/detail_commande/:id', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   console.log("commande "+req.params.id);
   // Génération du dictionnaire dummy
   var dummy_dict = {
