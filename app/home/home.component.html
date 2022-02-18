@@ -1,0 +1,14 @@
+<!-- Auth form to be identified as a Jaspersoft user -->
+<div class="row">
+	<div id="authentication_jasper" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngIf="!authStatus">
+		<h5>Formulaire pour requête API</h5>
+		<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+		    <div class="form-group">
+		        <label class="col-form-label" for="n_commande">Numéro de commande</label>
+		        <input id="n_commande" class="form-control" type="text" name="n_n_commande" ngModel required>
+		    </div>
+		    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Confirmer</button>
+		</form>
+		<p id="error_auth" class="text-danger"></p>
+	</div>
+</div>
