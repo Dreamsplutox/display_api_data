@@ -1,6 +1,26 @@
+<!-- Alert modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="alert_modal_title" class="modal-title" id="alertModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="alert_modal_body"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Auth form to be identified as a Jaspersoft user -->
 <div class="row">
-	<div id="authentication_jasper" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngIf="!authStatus">
+	<div id="authentication_jasper" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" *ngIf="!authStatus">
 		<h5>Formulaire pour requête API</h5>
 		<form (ngSubmit)="onSubmit(f)" #f="ngForm">
 		    <div class="form-group">
@@ -10,5 +30,22 @@
 		    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Confirmer</button>
 		</form>
 		<p id="error_auth" class="text-danger"></p>
+	</div>
+	<div id="api_results" class="col-lg-7 col-md-7 col-sm-7 col-xs-7 text-center" *ngIf="displayResults">
+		<h5>Liste des articles récupérés :</h5>
+		<table class="table table-bordered table-hover">
+  			<thead class="thead-dark">
+  				<tr>
+			      <th scope="col">Nom</th>
+			      <th scope="col">Quantité</th>
+			    </tr>
+  			</thead>
+  			<tbody>
+  				<tr *ngFor="let result of apiResults">
+  					<td>{{result.nom}}</td>
+  					<td>{{result.quantite}}</td>
+  				</tr>
+  			</tbody>
+  		</table>
 	</div>
 </div>
