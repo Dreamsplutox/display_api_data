@@ -6,12 +6,13 @@ const express = require('express'),
 app.get('/', (req, res) => res.send('Bienvenue sur Express dummy API'));
 
 app.get('/detail_commande/:id', (req, res) => {
+  console.log("commande "+req.params.id);
+  //update cors header
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  console.log("commande "+req.params.id);
   // Génération du dictionnaire dummy
   var dummy_dict = {
-    'id_commande' : 10200,
+    'id_commande' : 1,
     'liste_articles' : [
       {
         'nom' : 'articleA',
@@ -24,8 +25,13 @@ app.get('/detail_commande/:id', (req, res) => {
     ]
   };
 
-
-  res.send(dummy_dict);
+  //if the id_commande is not 1, send a 404 message
+  if(req.params.id != 1){
+    console.log("404 error, no entry found");
+    res.send({'error': "404 error"});
+  }else{
+    res.send(dummy_dict);
+  }
 
 });
 

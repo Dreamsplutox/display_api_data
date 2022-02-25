@@ -21,3 +21,5 @@ http://localhost:8085/detail_commande/{{id_commande}}
 
 où id_commande sera une entrée utilisateur
 
+note : Quand une commande n'existe pas, une string 404 est renvoyée
+
